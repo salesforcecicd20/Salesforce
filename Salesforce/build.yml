@@ -39,7 +39,7 @@ steps:
     sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E6jhvNnbO6xmjIFn3.kVQqBampaTTK5S_83tr.DnTW5KhHAuCJrrQ0TwRAX.IFlvbdY_7q1 --jwtkeyfile $(jwtKey.secureFilePath) --username salesforcecicd20@gmail.com --instanceurl https://login.salesforce.com -a DRish
   displayName: Authorize salesforce org
 - bash:
-    ls -al
+    ls -al && cd Salesforce && ls -al
   displayName: ls -al  
 - bash:
     sfdx force:source:deploy -l RunLocalTests -c -x Salesforce/manifest/package.xml -u DRish -w 10
