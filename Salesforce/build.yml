@@ -1,21 +1,20 @@
 # Salesforce DevOps Pipeline
 
 trigger:
-
-branches:
-    include:
-    - master
-    - dev
-    - qa
-    - uat
-paths:
-    exclude:
-    - README.md
-    - azure-pipelines.yml
-    - pr/pr-build-dev.yml
-    - pr/pr-build-qa.yml
-    - pr/pr-build-uat.yml
-    - pr/pr-build-master.yml
+  branches:
+      include:
+      - master
+      - dev
+      - qa
+      - uat
+  paths:
+      exclude:
+      - README.md
+      - azure-pipelines.yml
+      - pr/pr-build-dev.yml
+      - pr/pr-build-qa.yml
+      - pr/pr-build-uat.yml
+      - pr/pr-build-master.yml
 pr: none
 
 jobs:
