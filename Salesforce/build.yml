@@ -1,7 +1,7 @@
 # Salesforce DevOps Pipeline
 
 trigger:
-batch: "true"
+
 branches:
     include:
     - master
