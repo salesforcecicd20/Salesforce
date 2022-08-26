@@ -1,4 +1,5 @@
-# Salesforce DevOps Pipeline
+variables:
+  group: sfdx-org-dev
 
 trigger:
   branches:
@@ -17,16 +18,7 @@ trigger:
       - pr/pr-build-master.yml
 pr: none
 
-jobs:
-- job: Deploy
-variables:
-  group: sfdx-org-dev
-# - $:
-#     - group: sfdx-org-qa
-# - $:
-#     - group: sfdx-org-uat
-# - $:
-#     - group: sfdx-org-master
+
 steps:
 - task: UseNode@1
   displayName: 'Use Node.js 16.15.0'
