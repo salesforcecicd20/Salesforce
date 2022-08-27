@@ -1,23 +1,7 @@
-variables:
-  group: sfdx-org-dev
-
 trigger:
   branches:
       include:
-      - master
-      - dev
-      - qa
-      - uat
-  paths:
-      exclude:
-      - README.md
-      - azure-pipelines.yml
-      - pr/pr-build-dev.yml
-      - pr/pr-build-qa.yml
-      - pr/pr-build-uat.yml
-      - pr/pr-build-master.yml
-pr: none
-
+      - yaml-changes
 
 steps:
 - task: UseNode@1
@@ -46,4 +30,4 @@ steps:
   displayName: Run Validation on source code
 - bash: 
     sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u DRish -w 10
-  displayName: Deploy source code to Salesforce Org
+  displayName: Deploy source code to Salesforce Org.
