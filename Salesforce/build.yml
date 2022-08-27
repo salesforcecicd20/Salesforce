@@ -25,9 +25,16 @@ steps:
 - bash:
     ls -al && cd Salesforce && ls -al && echo 'this is PWD' && pwd
   displayName: ls -al  
-- bash:
-    sfdx force:source:deploy -l RunLocalTests -c -x $(Build.SourcesDirectory)/Salesforce/manifest/package.xml -u DRish -w 10
-  displayName: Run Validation on source code
+# - bash:
+#     sfdx force:source:deploy -l RunLocalTests -c -x $(Build.SourcesDirectory)/Salesforce/manifest/package.xml -u DRish -w 10
+#   displayName: Run Validation on source code
+# - bash: 
+#     sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u DRish -w 10
+#   displayName: Deploy source code to Salesforce Org.
+
 - bash: 
-    sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u DRish -w 10
+    sfdx force:source:deploy -p force-app --username salesforcecicd20@gmail.com -w 10
   displayName: Deploy source code to Salesforce Org.
+
+
+# $(Build.SourcesDirectory)/
