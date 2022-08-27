@@ -33,7 +33,7 @@ steps:
 #   displayName: Deploy source code to Salesforce Org.
 
 - bash: 
-    sfdx force:source:deploy -p force-app --username salesforcecicd20@gmail.com -w 10
+    sfdx force:source:deploy -p force-app -u DRish -w 10
   displayName: Deploy source code to Salesforce Org.
 
 
