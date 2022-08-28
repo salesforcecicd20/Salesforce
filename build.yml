@@ -18,25 +18,27 @@ steps:
   displayName: 'Download Server JWT Key'
   inputs:
     secureFile: 'server.key'
+
 - bash:
     sfdx config:set restDeploy=false --global
   displayName: Use SOAP API for Deployment
+
 - bash: 
     sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E6jhvNnbO6xmjIFn3.kVQqBampaTTK5S_83tr.DnTW5KhHAuCJrrQ0TwRAX.IFlvbdY_7q1 --jwtkeyfile $(jwtKey.secureFilePath) --username salesforcecicd20@gmail.com --instanceurl https://login.salesforce.com -a DRish
   displayName: Authorize salesforce org
+
 - bash:
     ls -al && cd Salesforce && ls -al && echo 'this is PWD' && pwd
   displayName: ls -al  
-# - bash:
-#     sfdx force:source:deploy -l RunLocalTests -c -x $(Build.SourcesDirectory)/Salesforce/manifest/package.xml -u DRish -w 10
-#   displayName: Run Validation on source code
-# - bash: 
-#     sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u DRish -w 10
-#   displayName: Deploy source code to Salesforce Org.
+
+- bash:
+    sfdx force:source:deploy -l RunLocalTests -c -x $(Build.SourcesDirectory)/Salesforce/manifest/package.xml -u DRish -w 10
+  displayName: Run Validation on source code
+
+- bash: 
+    sfdx force:source:deploy -l RunLocalTests -x manifest/package.xml -u DRish -w 10
+  displayName: Deploy source code to Salesforce Org.
 
 - bash: 
     sfdx force:source:deploy -p force-app -w 10 -u salesforcecicd20@gmail.com
   displayName: Deploy source code to Salesforce Org.
-
-
-# $(Build.SourcesDirectory)/
